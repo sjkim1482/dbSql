@@ -18,7 +18,7 @@ SELECT 절: 컬럼을 제한
 
 ***********매우매우매우 중요**********
 WHERE 절 : 조건에 만족하는 행들만 조회되도록 제한 (행을 제한)
-           ex ) sal 컬럼의 값이 1500보다 클 사람들만 조회 ==> 7명
+           ex ) sal 컬럼의 값이 1500보다 큰 사람들만 조회 ==> 7명
            
 *WHERE절에 기술된 조건을 참(TRUE)으로 만족하는 행들만 조회가 된다.*
            
@@ -38,7 +38,7 @@ WHERE 절 : 조건에 만족하는 행들만 조회되도록 제한 (행을 제�
         
 users테이블에는 총 5명의 캐릭터가 등록이 되어있는데
 그중에서 userid 컬럼의 값이 'brown'인 행만 조회하도록
-WHERE절에 조간을 기술
+WHERE절에 조건을 기술
 SELECT userid, usernm, alias, reg_dt
 FROM users
 WHERE 1 = 2;
@@ -163,6 +163,64 @@ WHERE mem_name LIKE '%이%';
 SELECT *
 FROM emp
 WHERE comm IS NOT NULL;
+
+
+
+
+
+
+SELECT ename, hiredate
+FROM emp
+WHERE hiredate BETWEEN TO_DATE('1982-01-01','yyyy-mm-dd') AND TO_DATE('1983-01-01','yyyy-mm-dd');
+
+SELECT ename, hiredate
+FROM emp
+WHERE TO_DATE('1982-01-01','yyyy-mm-dd')<= hiredate AND hiredate <= TO_DATE('1983-01-01','yyyy-mm-dd');
+
+
+SELECT userid AS 아이디, usernm AS 이름, alias AS 별명
+FROM users
+WHERE userid IN('brown', 'cony', 'sally');
+
+
+
+SELECT mem_id, mem_name
+FROM member
+WHERE mem_name LIKE('신%');
+
+
+SELECT mem_id, mem_name
+FROM member
+WHERE mem_name LIKE('%은%');
+
+SELECT *
+FROM emp
+WHERE job = 'SALESMAN' AND hiredate >= TO_DATE('1981-06-01','yyyy-mm-dd');
+
+SELECT *
+FROM emp
+WHERE deptno != 10 AND hiredate >= TO_DATE('1981-06-01','yyyy-mm-dd');
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
