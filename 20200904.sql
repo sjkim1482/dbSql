@@ -277,7 +277,76 @@ WHERE ROWNUM BETWEEN 1 AND 6;
 
 2 - 3 - 1 - 4
 
+과제 WHERE 11번
+SELECT *
+FROM emp
+WHERE job = 'SALESMAN' OR hiredate  > TO_DATE('1981-06-01','yyyy-mm-dd');
 
+과제 WHERE 12번
+SELECT *
+FROM emp
+WHERE job = 'SALESMAN' OR empno LIKE('78%');
+
+DESC emp;
+
+과제 WHERE 13번
+SELECT *
+FROM emp
+WHERE job = 'SALESMAN' OR empno >= '7800' AND empno < '7900'  ;
+
+과제 WHERE 13번
+SELECT *
+FROM emp
+WHERE job = 'SALESMAN' OR empno BETWEEN '7800' AND '7899'  ;
+
+
+과제 WHERE 14번
+SELECT *
+FROM emp
+WHERE job = 'SALESMAN' OR empno LIKE('78%') 
+AND hiredate > TO_DATE('1981-06-01','yyyy-mm-dd');
+
+
+사원정보를 페이징처리
+1페이지 5명씩 조회
+1페이지 : 1~5      (page-1)*pageSize +1 ~ page * pageSize
+2페이지 : 6~10     page
+3페이지 : 11~15    page
+page, pageSize = 5
+SELECT *
+FROM
+(SELECT ROWNUM rn, a.*
+FROM
+(SELECT  empno, ename
+FROM emp
+ORDER BY ename) a)
+WHERE rn BETWEEN (:page -1) * :pageSize + 1 AND :page * :pageSize;
+
+SELECT 절에 *사용 했는데 ,를 통해 다른 특수 컬럼이나 EXPRESSION 을 사용할 경우는
+       *앞에 해당 데이터가 어떤 테이블에서 왔는지 명시를 해줘야 한다(한정자)
+SELECT ROWNUM,emp.*
+FROM emp;
+SELECT *
+FROM
+(SELECT ROWNUM nm, a. *
+FROM 
+(SELECT ename, empno
+FROM emp
+ORDER BY ename)a)
+WHERE nm BETWEEN (:page -1) * :pageSize + 1 AND :page * :pageSize;
+
+
+
+
+
+
+SELECT ROWNUM nm e. *
+(SELECT ename, nmpno
+FROM emp)
+
+
+
+DESC emp;
 
 
 
