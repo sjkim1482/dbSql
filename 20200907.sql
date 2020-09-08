@@ -159,7 +159,14 @@ sql = nsl 포맷에 설정된 문자열 형식을 따르거나
        TO_DATE('날짜 문자열','날짜 문자열 형식')
        
 
+SELECT *
+FROM (SELECT ROWNUM nm , a.*
+      FROM (SELECT empno, ename
+            FROM emp
+            ORDER BY ename)a)
+WHERE nm BETWEEN (:page-1) * :pageSize+1 AND :page * :pageSize; 
 
+DESC emp;
 
 
 
