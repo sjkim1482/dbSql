@@ -20,6 +20,7 @@ NULL 관련 함수 - NULL과 관련의 연산의 결과는 NULL
         System.out.println(expr2);
     else
         System.out.println(expr3);
+
         
 3. NULLIF(expr1, expr2)
     if(expr1 == expr2)
@@ -198,6 +199,16 @@ SELECT userid, usernm ,reg_dt,
        DECODE(MOD(TO_CHAR(reg_dt,'YY'),2), MOD(TO_CHAR(SYSDATE,'YY'),2),'건강검진 대상자','건강검진 비대상자') contacrrodoctor2
 FROM users;
 
+
+
+3. NULLIF(expr1, expr2)
+    if(expr1 == expr2)
+        System.out.println(NULL);
+    else
+        System.out.println(expr1);
+//null = null => false
+SELECT mgr, comm, NULLIF(mgr,comm)
+FROM emp;
 
 
 
