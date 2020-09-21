@@ -1,0 +1,2 @@
+SELECT *
+FROM SJK.v_emp;
