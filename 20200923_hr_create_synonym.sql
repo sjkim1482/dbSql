@@ -1,0 +1,8 @@
+SJK.v_emp ==> v_emp
+SELECT *
+FROM SJK.V_EMP;
+
+CREATE SYNONYM v_emp FOR SJK.V_EMP;
+
+SELECT *
+FROM V_EMP;
